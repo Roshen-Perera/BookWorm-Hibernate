@@ -1,4 +1,16 @@
 package lk.ijse.dto;
 
-public class UserDto {
+import lombok.*;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Setter
+@Getter
+public class UserDTO {
+    private String id;
+    private String username;
+    private String mobile;
+    private String password;
+    private String repeatpassword;
 }
