@@ -70,7 +70,7 @@
                   <Font size="25.0" />
                </font>
             </PasswordField>
-            <TextField fx:id="txtMobileNumber" layoutX="183.0" layoutY="256.0" prefHeight="61.0" prefWidth="342.0" promptText="Enter your Mobile" styleClass="text-field" stylesheets="@../styles/styles.css">
+            <TextField fx:id="txtEmail" layoutX="183.0" layoutY="256.0" prefHeight="61.0" prefWidth="342.0" promptText="Enter your email address" styleClass="text-field" stylesheets="@../styles/styles.css">
                <font>
                   <Font size="25.0" />
                </font>

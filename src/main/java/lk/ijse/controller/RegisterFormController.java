@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 public class RegisterFormController {
 
     @FXML
-    private TextField txtMobileNumber;
+    private TextField txtEmail;
 
     @FXML
     private TextField txtPassword;
@@ -44,7 +44,7 @@ public class RegisterFormController {
 
     private void clearFields() {
         txtUserName.setText("");
-        txtMobileNumber.setText("");
+        txtEmail.setText("");
         txtPassword.setText("");
         txtPasswordRepeat.setText("");
     }
@@ -64,7 +64,7 @@ public class RegisterFormController {
     void btnSignUpOnAction(ActionEvent event) throws Exception {
         String id = userBO.generateNewUserID();
         String name = txtUserName.getText();
-        String mobile = txtMobileNumber.getText();
+        String email = txtEmail.getText();
         String password = txtPassword.getText();
         String repeatPassword = txtPasswordRepeat.getText();
         try {
@@ -76,7 +76,7 @@ public class RegisterFormController {
                 return;
             }
             System.out.println(id);
-            userBO.saveUser(new UserDTO(id, name, mobile, password, repeatPassword));
+            userBO.saveUser(new UserDTO(id, name, email, password, repeatPassword));
             new Alert(Alert.AlertType.CONFIRMATION,"User Added Successfully !!!", ButtonType.OK).show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -92,7 +92,7 @@ public class RegisterFormController {
             isValid = false;
         }
 
-        if (!Pattern.matches("\\d{10}", txtMobileNumber.getText())) {
+        if (!Pattern.matches("\\d{10}", txtEmail.getText())) {
             showErrorNotification("Invalid Mobile Number", "The mobile number you entered is invalid");
             isValid = false;
         }

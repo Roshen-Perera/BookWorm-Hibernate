@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class UserBOImpl implements UserBO {
     UserDAO userDAO = (UserDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USER);
     public boolean saveUser(UserDTO dto) throws Exception {
-        return userDAO.save(new User(dto.getId(), dto.getUsername(), dto.getMobile(), dto.getPassword(), dto.getRepeatpassword()));
+        return userDAO.save(new User(dto.getId(), dto.getUsername(), dto.getEmail(), dto.getPassword(), dto.getRepeatpassword()));
     }
 
     public String generateNewUserID() throws IOException{
