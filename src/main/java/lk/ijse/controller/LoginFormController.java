@@ -50,6 +50,11 @@ public class LoginFormController {
             return;
         }
         if (login) {
+            Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/navigation_form.fxml"));
+            Scene scene =new Scene(rootNode);
+            Stage primaryStage = (Stage) this.rootNode.getScene().getWindow();
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("BookWorm");
             new Alert(Alert.AlertType.CONFIRMATION, "Logged in Successfully");
         } else {
             new Alert(Alert.AlertType.ERROR, "oops! credentials are incorrect!").show();
