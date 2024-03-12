@@ -10,7 +10,7 @@ import lombok.*;
 @Setter
 @Getter
 @Entity
-public class User {
+public class Admin {
     @Id
     private String id;
     private String username;

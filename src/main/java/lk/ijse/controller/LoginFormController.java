@@ -12,11 +12,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.UserBO;
-import lk.ijse.dao.DAOFactory;
-import lk.ijse.entity.User;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class LoginFormController {
     @FXML

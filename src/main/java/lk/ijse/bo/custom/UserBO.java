@@ -1,13 +1,12 @@
 package lk.ijse.bo.custom;
 
 import lk.ijse.bo.SuperBO;
-import lk.ijse.dto.UserDTO;
+import lk.ijse.dto.AdminDTO;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public interface UserBO extends SuperBO {
-    public boolean saveUser(UserDTO dto) throws Exception;
+    public boolean saveUser(AdminDTO dto) throws Exception;
 
     public String generateNewUserID() throws IOException;
 

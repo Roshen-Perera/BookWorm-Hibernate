@@ -13,12 +13,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.UserBO;
-import lk.ijse.dto.UserDTO;
+import lk.ijse.dto.AdminDTO;
 import org.controlsfx.control.Notifications;
 
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.regex.Pattern;
 
 public class RegisterFormController {
@@ -76,7 +75,7 @@ public class RegisterFormController {
                 return;
             }
             System.out.println(id);
-            userBO.saveUser(new UserDTO(id, name, email, password, repeatPassword));
+            userBO.saveUser(new AdminDTO(id, name, email, password, repeatPassword));
             new Alert(Alert.AlertType.CONFIRMATION,"User Added Successfully !!!", ButtonType.OK).show();
         } catch (Exception e) {
             e.printStackTrace();

@@ -2,19 +2,18 @@ package lk.ijse.dao.custom.impl;
 
 import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.custom.UserDAO;
-import lk.ijse.entity.User;
+import lk.ijse.entity.Admin;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
 
 import java.io.IOException;
-import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
     public String generateNewID() throws IOException {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT id FROM User ORDER BY id DESC LIMIT 1");
+        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT id FROM Admin ORDER BY id DESC LIMIT 1");
         String id = nativeQuery.uniqueResult();
         transaction.commit();
         session.close();
@@ -40,7 +39,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public boolean save(User entity) throws Exception {
+    public boolean save(Admin entity) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         session.persist(entity);
@@ -53,7 +52,7 @@ public class UserDAOImpl implements UserDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT password FROM user WHERE username = :username");
+        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT password FROM admin WHERE username = :username");
         nativeQuery.setParameter("username",username);
 
         String pass = nativeQuery.uniqueResult();
