@@ -1,4 +1,4 @@
-package lk.ijse.dto;
+package lk.ijse.dto.tm;
 
 
 import lombok.*;
@@ -8,7 +8,7 @@ import lombok.*;
 @ToString
 @Setter
 @Getter
-public class BranchDTO {
+public class BranchTM {
     private String id;
     private String location;
     private String email;

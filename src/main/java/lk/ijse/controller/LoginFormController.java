@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.bo.BOFactory;
-import lk.ijse.bo.custom.UserBO;
+import lk.ijse.bo.custom.LoginBO;
 
 import java.io.IOException;
 
@@ -25,7 +25,7 @@ public class LoginFormController {
     @FXML
     private AnchorPane rootNode;
 
-    UserBO userBO = (UserBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
+    LoginBO loginBO = (LoginBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
 
     public void clearFields(){
         txtUserName.clear();
@@ -41,11 +41,11 @@ public class LoginFormController {
     void btnSignInOnAction(ActionEvent event) throws IOException {
         String username = txtUserName.getText();
         String password = txtPassword.getText();
-        boolean login = userBO.checkPassword(username, password);
-        if(username.isEmpty() || password.isEmpty()) {
+        boolean login = loginBO.checkPassword(username, password);
+        /*if(username.isEmpty() || password.isEmpty()) {
             new Alert(Alert.AlertType.ERROR, "Empty").show();
             return;
-        }
+        }*/
         if (login) {
             Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/navigation_form.fxml"));
             Scene scene =new Scene(rootNode);

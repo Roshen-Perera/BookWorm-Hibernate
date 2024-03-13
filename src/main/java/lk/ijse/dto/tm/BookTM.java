@@ -1,4 +1,4 @@
-package lk.ijse.dto;
+package lk.ijse.dto.tm;
 
 import lombok.*;
 
@@ -7,7 +7,7 @@ import lombok.*;
 @ToString
 @Setter
 @Getter
-public class BookDTO {
+public class BookTM {
     private String id;
     private String name;
     private String author;

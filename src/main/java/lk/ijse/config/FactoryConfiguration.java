@@ -1,6 +1,7 @@
 package lk.ijse.config;
 
-import lk.ijse.entity.Admin;
+import lk.ijse.entity.User;
+import lk.ijse.entity.Branch;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -11,7 +12,7 @@ public class FactoryConfiguration {
 
     private FactoryConfiguration() {
         Configuration configuration = new Configuration().configure()
-                .addAnnotatedClass(Admin.class);;
+                .addAnnotatedClass(User.class).addAnnotatedClass(Branch.class);
         sessionFactory = configuration.buildSessionFactory();
     }
 

@@ -1,69 +1,45 @@
 package lk.ijse.dao.custom.impl;
 
-import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.custom.UserDAO;
-import lk.ijse.entity.Admin;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.query.NativeQuery;
+import lk.ijse.entity.User;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
+    @Override
     public String generateNewID() throws IOException {
-        Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT id FROM Admin ORDER BY id DESC LIMIT 1");
-        String id = nativeQuery.uniqueResult();
-        transaction.commit();
-        session.close();
-
-        if (id != null) {
-            String[] strings = id.split("U0");
-            int newID = Integer.parseInt(strings[1]);
-            newID++;
-            String ID = String.valueOf(newID);
-            int length = ID.length();
-            if (length < 2) {
-                return "U00" + newID;
-            } else {
-                if (length < 3) {
-                    return "U0" + newID;
-                } else {
-                    return "U" + newID;
-                }
-            }
-        } else {
-            return "U001";
-        }
+        return null;
     }
 
     @Override
-    public boolean save(Admin entity) throws Exception {
-        Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-        session.persist(entity);
-        transaction.commit();
-        session.close();
-        return true;
+    public List<User> getAll() throws Exception {
+        return null;
     }
 
-    public boolean checkPassword(String username, String password) throws IOException {
-        Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
+    @Override
+    public boolean add(User entity) throws Exception {
+        return false;
+    }
 
-        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT password FROM admin WHERE username = :username");
-        nativeQuery.setParameter("username",username);
+    @Override
+    public boolean update(User entity) throws Exception {
+        return false;
+    }
 
-        String pass = nativeQuery.uniqueResult();
+    @Override
+    public boolean exist(String id) throws Exception {
+        return false;
+    }
 
-        transaction.commit();
-        session.close();
+    @Override
+    public boolean delete(String id) throws Exception {
+        return false;
+    }
 
-        if (password.equalsIgnoreCase(pass)) {
-            return true;
-        }else {
-            return false;
-        }
+    @Override
+    public User search(String id) throws SQLException {
+        return null;
     }
 }

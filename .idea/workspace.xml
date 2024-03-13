@@ -5,18 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b887d02-2865-4bbe-9297-7ec399a6740c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/AdminDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/bo/custom/UserBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/bo/custom/UserBO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/bo/custom/impl/UserBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/bo/custom/impl/UserBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/bo/BOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/bo/BOFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/config/FactoryConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/config/FactoryConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/BranchesFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/BranchesFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LoginFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LoginFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/MemberFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/MemberFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/RegisterFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/RegisterFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/custom/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/custom/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/custom/impl/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/custom/impl/UserDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/UserDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/entity/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/styles/nav.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles/nav.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/UserFormController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/CrudDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/CrudDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/DAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/DAOFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/BookDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/BookDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/BranchDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/BranchDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/entity/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/entity/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/entity/Branch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/entity/Branch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/branches_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/branches_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/login_form.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/user_form.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,10 +31,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -88,6 +93,7 @@
       <recent name="D:\IJSE\My Repositories\BookWorm-Hibernate\src\main\resources\styles" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="lk.ijse.dto.tm" />
       <recent name="lk.ijse.dto" />
     </key>
   </component>
@@ -159,7 +165,10 @@
       <workItem from="1710141873867" duration="23957000" />
       <workItem from="1710230522841" duration="2161000" />
       <workItem from="1710254168686" duration="536000" />
-      <workItem from="1710258767951" duration="930000" />
+      <workItem from="1710258767951" duration="6696000" />
+      <workItem from="1710274884202" duration="1506000" />
+      <workItem from="1710310085311" duration="2707000" />
+      <workItem from="1710327141396" duration="4351000" />
     </task>
     <servers />
   </component>
