@@ -17,28 +17,28 @@ public class BookDAOImpl implements BookDAO {
     public String generateNewID() throws IOException {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT id FROM Branch ORDER BY id DESC LIMIT 1");
+        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT id FROM book ORDER BY id DESC LIMIT 1");
         String id = nativeQuery.uniqueResult();
         transaction.commit();
         session.close();
 
         if (id != null) {
-            String[] strings = id.split("BO0");
+            String[] strings = id.split("B0");
             int newID = Integer.parseInt(strings[1]);
             newID++;
             String ID = String.valueOf(newID);
             int length = ID.length();
             if (length < 2) {
-                return "BO00" + newID;
+                return "B00" + newID;
             } else {
                 if (length < 3) {
-                    return "BO0" + newID;
+                    return "B0" + newID;
                 } else {
-                    return "BO" + newID;
+                    return "B" + newID;
                 }
             }
         } else {
-            return "BO001";
+            return "B001";
         }
     }
 

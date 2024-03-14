@@ -12,4 +12,5 @@ public interface BranchBO extends SuperBO {
     public boolean addBranch(BranchDTO dto) throws Exception;
     public boolean updateBranch(BranchDTO dto) throws Exception;
     public boolean deleteBranch(String id) throws Exception;
-    }
+    public BranchDTO search(String id) throws Exception;
+}

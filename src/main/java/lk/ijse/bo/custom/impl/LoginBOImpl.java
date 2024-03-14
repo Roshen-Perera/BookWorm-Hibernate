@@ -9,7 +9,7 @@ import lk.ijse.entity.User;
 import java.io.IOException;
 
 public class LoginBOImpl implements LoginBO {
-    LoginDAO loginDAO = (LoginDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USER);
+    LoginDAO loginDAO = (LoginDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.LOGIN);
     public boolean saveUser(UserDTO dto) throws Exception {
         return loginDAO.save(new User(dto.getId(), dto.getUsername(), dto.getEmail(), dto.getPassword(), dto.getRepeatpassword()));
     }

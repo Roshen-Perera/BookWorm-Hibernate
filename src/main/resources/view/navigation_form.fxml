@@ -10,22 +10,22 @@
    <children>
       <AnchorPane prefHeight="690.0" prefWidth="250.0" styleClass="background" stylesheets="@../styles/nav.css">
          <children>
-            <JFXButton layoutY="212.0" onAction="#btnDashBoardOnAction" prefHeight="52.0" prefWidth="250.0" style="-fx-alignment: left;" text="     Overview" textFill="WHITE">
+            <JFXButton layoutY="237.0" onAction="#btnDashBoardOnAction" prefHeight="52.0" prefWidth="250.0" style="-fx-alignment: left;" text="     Overview" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutY="265.0" onAction="#btnManageMembersOnAction" prefHeight="52.0" prefWidth="250.0" style="-fx-alignment: left;" text="     Manage Members" textFill="WHITE">
+            <JFXButton layoutY="290.0" onAction="#btnManageMembersOnAction" prefHeight="52.0" prefWidth="250.0" style="-fx-alignment: left;" text="     Manage Members" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutY="318.0" onAction="#btnManageBooksOnAction" prefHeight="52.0" prefWidth="250.0" style="-fx-alignment: left;" text="     Manage Books" textFill="WHITE">
+            <JFXButton layoutY="343.0" onAction="#btnManageBooksOnAction" prefHeight="52.0" prefWidth="250.0" style="-fx-alignment: left;" text="     Manage Books" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutY="424.0" onAction="#btnManageBranchesOnAction" prefHeight="52.0" prefWidth="250.0" style="-fx-alignment: left;" text="     Manage Branches" textFill="WHITE">
+            <JFXButton layoutY="449.0" onAction="#btnManageBranchesOnAction" prefHeight="52.0" prefWidth="250.0" style="-fx-alignment: left;" text="     Manage Branches" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -35,12 +35,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutY="371.0" onAction="#btnManageTransactionsOnAction" prefHeight="52.0" prefWidth="250.0" style="-fx-alignment: left;" text="     Transactions" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutY="477.0" onAction="#btnManageUsersOnAction" prefHeight="52.0" prefWidth="250.0" style="-fx-alignment: left;" text="     Manage Users" textFill="WHITE">
+            <JFXButton layoutY="396.0" onAction="#btnManageTransactionsOnAction" prefHeight="52.0" prefWidth="250.0" style="-fx-alignment: left;" text="     Transactions" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -52,6 +47,6 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="rootHome" layoutX="250.0" prefHeight="690.0" prefWidth="1116.0" style="-fx-alignment: left;" />
+      <AnchorPane fx:id="rootHome" layoutX="248.0" prefHeight="690.0" prefWidth="1116.0" style="-fx-alignment: left;" />
    </children>
 </AnchorPane>

@@ -3,9 +3,11 @@ package lk.ijse.dao.custom.impl;
 import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.custom.BranchDAO;
 import lk.ijse.entity.Branch;
+import lk.ijse.entity.Branch;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -87,6 +89,20 @@ public class BranchDAOImpl implements BranchDAO {
 
     @Override
     public Branch search(String id) throws SQLException {
-        return null;
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        Branch entity = null;
+
+        Query<Branch> query = session.createQuery("FROM Branch WHERE id = :id", Branch.class);
+        query.setParameter("id", id);
+        List<Branch> resultList = query.getResultList();
+        if (!resultList.isEmpty()) {
+            entity = resultList.get(0);
+        }
+
+        transaction.commit();
+        session.close();
+        return entity;
     }
 }

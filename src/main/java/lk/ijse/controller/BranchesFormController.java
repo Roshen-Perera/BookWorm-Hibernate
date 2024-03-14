@@ -1,11 +1,15 @@
 package lk.ijse.controller;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Duration;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.BranchBO;
 import lk.ijse.dto.BranchDTO;
@@ -13,6 +17,9 @@ import lk.ijse.dto.tm.BranchTM;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class BranchesFormController {
@@ -58,13 +65,28 @@ public class BranchesFormController {
         loadAllBranches();
         setCellValueFactory();
         tableListener();
+        setDateAndTime();
     }
 
+    private void setDateAndTime(){
+        Platform.runLater(() -> {
+            lblDate.setText(String.valueOf(LocalDate.now()));
+
+            Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1), event -> {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
+                String timeNow = LocalTime.now().format(formatter);
+                lblTime.setText(timeNow);
+            }));
+            timeline.setCycleCount(Timeline.INDEFINITE);
+            timeline.play();
+        });
+    }
     public void clearfield(){
-        txtLocation.clear();
-        txtMobile.clear();
-        txtEmail.clear();
-        txtSearch.clear();
+        lblBranchId.setText("");
+        txtLocation.setText("");
+        txtMobile.setText("");
+        txtEmail.setText("");
+        txtSearch.setText("");
     }
 
     private void generateNextUserId() throws SQLException, IOException, ClassNotFoundException {
@@ -154,8 +176,26 @@ public class BranchesFormController {
     }
 
     @FXML
-    void btnSearchOnAction(ActionEvent event) {
+    void btnSearchOnAction(ActionEvent event) throws Exception {
+        String id = txtSearch.getText();
 
+        try {
+            BranchDTO branchDTO;
+            branchDTO = branchBO.search(id);
+            if (branchDTO != null) {
+                lblBranchId.setText(String.valueOf(branchDTO.getId()));
+                txtLocation.setText(branchDTO.getLocation());
+                txtEmail.setText(branchDTO.getEmail());
+                txtMobile.setText(String.valueOf(branchDTO.getMobile()));
+            } else {
+                new Alert(Alert.AlertType.ERROR,"Student Doesn't exist").show();
+            }
+
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

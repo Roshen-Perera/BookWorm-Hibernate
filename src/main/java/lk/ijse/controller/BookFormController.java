@@ -1,12 +1,16 @@
 package lk.ijse.controller;
 
 import com.jfoenix.controls.JFXComboBox;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Duration;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.BookBO;
 import lk.ijse.bo.custom.BranchBO;
@@ -14,15 +18,19 @@ import lk.ijse.dto.BookDTO;
 import lk.ijse.dto.BranchDTO;
 import lk.ijse.dto.tm.BookTM;
 import lk.ijse.dto.tm.BranchTM;
+import lk.ijse.entity.Branch;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class BookFormController {
 
     @FXML
-    private JFXComboBox<?> cmdBranchId;
+    private JFXComboBox<String> cmbBranchId;
 
     @FXML
     private TableColumn<?, ?> colAuthor;
@@ -78,11 +86,41 @@ public class BookFormController {
     @FXML
     private TextField txtSearch;
     BranchBO branchBO = (BranchBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.BRANCH);
-
     BookBO bookBO = (BookBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.BOOK);
+    public void initialize() throws Exception {
+        setCellValueFactory();
+        generateNextBookId();
+        tableListener();
+        loadBranchIds();
+        setDateAndTime();
+    }
+    private void setDateAndTime(){
+        Platform.runLater(() -> {
+            lblDate.setText(String.valueOf(LocalDate.now()));
 
-    public void initialize(){
+            Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1), event -> {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
+                String timeNow = LocalTime.now().format(formatter);
+                lblTime.setText(timeNow);
+            }));
+            timeline.setCycleCount(Timeline.INDEFINITE);
+            timeline.play();
+        });
+    }
+    private void loadBranchIds() throws Exception {
+        ObservableList<String> obList = FXCollections.observableArrayList();
 
+        try {
+            List<BranchDTO> idList = branchBO.getAllBranches();
+
+            for (BranchDTO dto : idList) {
+                obList.add(dto.getId());
+            }
+
+            cmbBranchId.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
     private void clearFields(){
         lblBranchId.setText("");
@@ -225,12 +263,17 @@ public class BookFormController {
     }
 
     @FXML
-    void cmbBranchOnAction(ActionEvent event) {
-        String id = String.valueOf(cmdBranchId.getValue());
+    void cmbBranchOnAction(ActionEvent event) throws Exception {
+        String id = cmbBranchId.getValue();
 //        CustomerModel customerModel = new CustomerModel();
-        BranchDTO branchDto = null;/*branchBO.searchSupplier(id);*/
-        lblBranchId.setText(branchDto.getId());
-        lblBranchName.setText(branchDto.getLocation());
+        try {
+            BranchDTO branchDTO = branchBO.search(id);
+            lblBranchId.setText(branchDTO.getId());
+            lblBranchName.setText(branchDTO.getLocation());
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

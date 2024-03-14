@@ -25,7 +25,7 @@ public class LoginFormController {
     @FXML
     private AnchorPane rootNode;
 
-    LoginBO loginBO = (LoginBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
+    LoginBO loginBO = (LoginBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.LOGIN);
 
     public void clearFields(){
         txtUserName.clear();

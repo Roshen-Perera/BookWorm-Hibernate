@@ -13,7 +13,7 @@ public class LoginDAOImpl implements LoginDAO {
     public String generateNewID() throws IOException {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT id FROM Admin ORDER BY id DESC LIMIT 1");
+        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT id FROM user ORDER BY id DESC LIMIT 1");
         String id = nativeQuery.uniqueResult();
         transaction.commit();
         session.close();
@@ -52,7 +52,7 @@ public class LoginDAOImpl implements LoginDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT password FROM admin WHERE username = :username");
+        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT password FROM user WHERE username = :username");
         nativeQuery.setParameter("username",username);
 
         String pass = nativeQuery.uniqueResult();

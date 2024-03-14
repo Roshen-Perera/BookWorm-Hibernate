@@ -1,6 +1,7 @@
 package lk.ijse.dto;
 
 
+import jakarta.persistence.ManyToMany;
 import lombok.*;
 
 @AllArgsConstructor

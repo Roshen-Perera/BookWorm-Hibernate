@@ -7,7 +7,7 @@ import lombok.*;
 @ToString
 @Setter
 @Getter
-public class Transaction {
+public class TransactionDTO {
     private String id;
     private String username;
     private String email;

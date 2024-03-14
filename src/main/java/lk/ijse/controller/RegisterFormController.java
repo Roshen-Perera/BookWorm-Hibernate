@@ -39,7 +39,7 @@ public class RegisterFormController {
 
     String id;
 
-    LoginBO loginBO = (LoginBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
+    LoginBO loginBO = (LoginBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.LOGIN);
 
     private void clearFields() {
         txtUserName.setText("");
