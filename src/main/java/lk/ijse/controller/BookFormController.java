@@ -93,6 +93,7 @@ public class BookFormController {
         tableListener();
         loadBranchIds();
         setDateAndTime();
+        loadAllBooks();
     }
     private void setDateAndTime(){
         Platform.runLater(() -> {
@@ -138,7 +139,7 @@ public class BookFormController {
         lblBookId.setText(nextId);
     }
 
-    private void loadAllBranches() throws Exception {
+    private void loadAllBooks() throws Exception {
         ObservableList<BookTM> obList = FXCollections.observableArrayList();
         try{
             List<BookDTO> dtoList = bookBO.getAllBookes();
@@ -199,7 +200,7 @@ public class BookFormController {
             new Alert(Alert.AlertType.CONFIRMATION,"Book Added !", ButtonType.OK).show();
             generateNextBookId();
             clearFields();
-            loadAllBranches();
+            loadAllBooks();
         } catch (Exception e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, "Book Not Added !", ButtonType.OK).show();
@@ -219,7 +220,7 @@ public class BookFormController {
             new Alert(Alert.AlertType.CONFIRMATION,"Book Deleted !", ButtonType.OK).show();
             generateNextBookId();
             clearFields();
-            loadAllBranches();
+            loadAllBooks();
         } catch (Exception e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, "Book Not Deleted !", ButtonType.OK).show();
@@ -227,18 +228,25 @@ public class BookFormController {
     }
 
     @FXML
-    void btnSearchOnAction(ActionEvent event) {
+    void btnSearchOnAction(ActionEvent event) throws Exception {
         String id = txtSearch.getText();
-        BookDTO bookDto = /*BookBO.searchItem(id);*/null;
-        if (bookDto != null) {
-            txtSearch.setText(bookDto.getId());
-            txtBookName.setText(bookDto.getName());
-            txtBookAuthor.setText(bookDto.getAuthor());
-            txtBookGenre.setText(String.valueOf(bookDto.getGenre()));
-            txtBookQty.setText(String.valueOf(bookDto.getQty()));
-            lblBranchId.setText(bookDto.getBranchId());
-        }else {
-            new Alert(Alert.AlertType.INFORMATION, "Customer Saved").show();
+        try {
+            BookDTO bookDTO;
+            bookDTO = bookBO.search(id);
+            if (bookDTO != null) {
+                lblBookId.setText(bookDTO.getId());
+                txtBookName.setText(bookDTO.getName());
+                txtBookAuthor.setText(bookDTO.getAuthor());
+                txtBookGenre.setText(String.valueOf(bookDTO.getGenre()));
+                txtBookQty.setText(String.valueOf(bookDTO.getQty()));
+                cmbBranchId.setValue(bookDTO.getBranchId());
+            }else {
+                new Alert(Alert.AlertType.INFORMATION, "Book Not Found").show();
+            }
+        }catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -255,7 +263,7 @@ public class BookFormController {
             new Alert(Alert.AlertType.CONFIRMATION,"Book Updated !", ButtonType.OK).show();
             generateNextBookId();
             clearFields();
-            loadAllBranches();
+            loadAllBooks();
         } catch (Exception e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, "Book Not Update !", ButtonType.OK).show();
@@ -265,7 +273,6 @@ public class BookFormController {
     @FXML
     void cmbBranchOnAction(ActionEvent event) throws Exception {
         String id = cmbBranchId.getValue();
-//        CustomerModel customerModel = new CustomerModel();
         try {
             BranchDTO branchDTO = branchBO.search(id);
             lblBranchId.setText(branchDTO.getId());
@@ -276,5 +283,4 @@ public class BookFormController {
         }
 
     }
-
 }

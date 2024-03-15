@@ -3,7 +3,9 @@ package lk.ijse.bo.custom.impl;
 import lk.ijse.bo.custom.UserBO;
 import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.UserDAO;
+import lk.ijse.dto.BranchDTO;
 import lk.ijse.dto.UserDTO;
+import lk.ijse.entity.Branch;
 import lk.ijse.entity.User;
 
 import java.io.IOException;
@@ -42,7 +44,14 @@ public class UserBOImpl implements UserBO {
         return userDAO.delete(id);
     }
 
-    public User search(String id) throws Exception {
-        return userDAO.search(id);
+    public UserDTO search(String id) throws Exception {
+        User user = userDAO.search(id);
+        if (user != null) {
+            return new UserDTO(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), user.getRepeatpassword());
+        } else {
+            return null;
+        }
     }
+
+
 }

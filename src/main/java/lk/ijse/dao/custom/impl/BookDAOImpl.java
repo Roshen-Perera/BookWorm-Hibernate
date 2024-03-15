@@ -3,9 +3,11 @@ package lk.ijse.dao.custom.impl;
 import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.custom.BookDAO;
 import lk.ijse.entity.Book;
+import lk.ijse.entity.Book;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -90,6 +92,20 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     public Book search(String id) throws SQLException {
-        return null;
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        Book entity = null;
+
+        Query<Book> query = session.createQuery("FROM Book WHERE id = :id", Book.class);
+        query.setParameter("id", id);
+        List<Book> resultList = query.getResultList();
+        if (!resultList.isEmpty()) {
+            entity = resultList.get(0);
+        }
+
+        transaction.commit();
+        session.close();
+        return entity;
     }
 }

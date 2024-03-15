@@ -137,7 +137,7 @@ public class BranchesFormController {
     }
 
     @FXML
-    void btnAddCustomerOnAction(ActionEvent event) {
+    void btnAddBranchOnAction(ActionEvent event) {
         String id = lblBranchId.getText();
         String location = txtLocation.getText();
         String email = txtEmail.getText();
@@ -156,12 +156,12 @@ public class BranchesFormController {
     }
 
     @FXML
-    void btnClearCustomerOnAction(ActionEvent event) {
+    void btnClearBranchOnAction(ActionEvent event) {
         clearfield();
     }
 
     @FXML
-    void btnDeleteCustomerOnAction(ActionEvent event) {
+    void btnDeleteBranchOnAction(ActionEvent event) {
         String id = lblBranchId.getText();
         try {
             branchBO.deleteBranch(id);
@@ -199,7 +199,7 @@ public class BranchesFormController {
     }
 
     @FXML
-    void btnUpdateCustomerOnAction(ActionEvent event) {
+    void btnUpdateBranchOnAction(ActionEvent event) {
         String id = lblBranchId.getText();
         String location = txtLocation.getText();
         String email = txtEmail.getText();

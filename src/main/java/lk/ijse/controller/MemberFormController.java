@@ -13,6 +13,7 @@ import javafx.util.Duration;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.custom.UserBO;
 import lk.ijse.dto.UserDTO;
+import lk.ijse.dto.UserDTO;
 import lk.ijse.dto.tm.UserTM;
 import org.controlsfx.control.Notifications;
 
@@ -68,7 +69,7 @@ public class MemberFormController {
 
     public void initialize() throws Exception {
         generateNextUserId();
-        loadAllBranches();
+        loadAllUseres();
         setCellValueFactory();
         setDateAndTime();
         tableListener();
@@ -101,7 +102,7 @@ public class MemberFormController {
         lblUserId.setText(nextId);
     }
 
-    private void loadAllBranches() throws Exception {
+    private void loadAllUseres() throws Exception {
         ObservableList<UserTM> obList = FXCollections.observableArrayList();
         try{
             List<UserDTO> dtoList = userBO.getAllUser();
@@ -187,8 +188,27 @@ public class MemberFormController {
     }
 
     @FXML
-    void btnSearchOnAction(ActionEvent event) {
+    void btnSearchOnAction(ActionEvent event) throws Exception {
+        String id = txtSearch.getText();
 
+        try {
+            UserDTO userDTO;
+            userDTO = userBO.search(id);
+            if (userDTO != null) {
+                lblUserId.setText(String.valueOf(userDTO.getId()));
+                txtName.setText(userDTO.getUsername());
+                txtEmail.setText(userDTO.getEmail());
+                txtPassword.setText(String.valueOf(userDTO.getPassword()));
+                txtPassword2.setText(String.valueOf(userDTO.getRepeatpassword()));
+            } else {
+                new Alert(Alert.AlertType.ERROR,"Student Doesn't exist").show();
+            }
+
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

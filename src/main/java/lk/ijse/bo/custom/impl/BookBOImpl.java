@@ -4,8 +4,6 @@ import lk.ijse.bo.custom.BookBO;
 import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.BookDAO;
 import lk.ijse.dto.BookDTO;
-import lk.ijse.dto.BookDTO;
-import lk.ijse.entity.Book;
 import lk.ijse.entity.Book;
 
 import java.io.IOException;
@@ -42,5 +40,14 @@ public class BookBOImpl implements BookBO {
     @Override
     public boolean deleteBook(String id) throws Exception {
         return bookDAO.delete(id);
+    }
+
+    public BookDTO search(String id) throws Exception {
+        Book book = bookDAO.search(id);
+        if (book != null) {
+            return new BookDTO(book.getId(), book.getName(), book.getAuthor(), book.getGenre(), book.getQty(), book.getBranchId());
+        } else {
+            return null;
+        }
     }
 }

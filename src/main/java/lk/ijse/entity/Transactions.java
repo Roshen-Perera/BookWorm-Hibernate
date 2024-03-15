@@ -1,5 +1,7 @@
-package lk.ijse.dto.tm;
+package lk.ijse.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.*;
 
 @AllArgsConstructor
@@ -7,7 +9,9 @@ import lombok.*;
 @ToString
 @Setter
 @Getter
-public class TransactionTM {
+@Entity
+public class Transactions {
+    @Id
     private String tranID;
     private String memID;
     private String memName;
@@ -16,4 +20,3 @@ public class TransactionTM {
     private String tranDate;
     private String tranEndDate;
 }
-

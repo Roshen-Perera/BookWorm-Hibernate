@@ -3,6 +3,7 @@ package lk.ijse.dao.custom.impl;
 import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.custom.UserDAO;
 import lk.ijse.entity.User;
+import lk.ijse.entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
@@ -92,10 +93,18 @@ public class UserDAOImpl implements UserDAO {
     public User search(String id) throws SQLException {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
+
+        User entity = null;
+
         Query<User> query = session.createQuery("FROM User WHERE id = :id", User.class);
         query.setParameter("id", id);
+        List<User> resultList = query.getResultList();
+        if (!resultList.isEmpty()) {
+            entity = resultList.get(0);
+        }
+
         transaction.commit();
         session.close();
-        return query.uniqueResult();
+        return entity;
     }
 }

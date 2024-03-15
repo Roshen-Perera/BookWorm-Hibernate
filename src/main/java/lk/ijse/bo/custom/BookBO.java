@@ -18,4 +18,5 @@ public interface BookBO extends SuperBO {
     public boolean updateBook(BookDTO dto) throws Exception;
 
     public boolean deleteBook(String id) throws Exception;
+    public BookDTO search(String id) throws Exception;
 }

@@ -1,9 +1,6 @@
 package lk.ijse.bo;
 
-import lk.ijse.bo.custom.impl.BookBOImpl;
-import lk.ijse.bo.custom.impl.BranchBOImpl;
-import lk.ijse.bo.custom.impl.LoginBOImpl;
-import lk.ijse.bo.custom.impl.UserBOImpl;
+import lk.ijse.bo.custom.impl.*;
 
 public class BOFactory {
     private static BOFactory boFactory;
@@ -14,7 +11,7 @@ public class BOFactory {
     }
 
     public enum BOTypes{
-        LOGIN, USER, BRANCH, BOOK
+        LOGIN, USER, BRANCH, BOOK, TRANSACTION
     }
 
     //Object creation logic for BO objects
@@ -28,6 +25,8 @@ public class BOFactory {
                 return new BranchBOImpl();
             case BOOK:
                 return new BookBOImpl();
+            case TRANSACTION:
+                return new TransactionBOImpl();
             default:
                 return null;
         }
