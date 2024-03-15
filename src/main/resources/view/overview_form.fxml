@@ -33,5 +33,61 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
+      <AnchorPane layoutX="71.0" layoutY="252.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2980b9; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="7.0" layoutY="4.0" prefHeight="32.0" prefWidth="178.0" stylesheets="@../../../../../../SEMESETER%20FINAL%20PROJECT/IDEA%20Project/Hardware-Store-Management-System-Layered-Architecture-Hibernate/src/main/resources/style/dashboard.css" text="Total Members" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblMembers" contentDisplay="CENTER" layoutX="1.0" layoutY="39.0" prefHeight="143.0" prefWidth="200.0" stylesheets="@../../../../../../SEMESETER%20FINAL%20PROJECT/IDEA%20Project/Hardware-Store-Management-System-Layered-Architecture-Hibernate/src/main/resources/style/dashboard.css" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="80.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="325.0" layoutY="252.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2ecc71; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="7.0" layoutY="4.0" prefHeight="32.0" prefWidth="178.0" stylesheets="@../../../../../../SEMESETER%20FINAL%20PROJECT/IDEA%20Project/Hardware-Store-Management-System-Layered-Architecture-Hibernate/src/main/resources/style/dashboard.css" text="Total Books" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblBooks" contentDisplay="CENTER" layoutX="1.0" layoutY="39.0" prefHeight="143.0" prefWidth="200.0" stylesheets="@../../../../../../SEMESETER%20FINAL%20PROJECT/IDEA%20Project/Hardware-Store-Management-System-Layered-Architecture-Hibernate/src/main/resources/style/dashboard.css" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="80.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="820.0" layoutY="252.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e74c3c; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="7.0" layoutY="4.0" prefHeight="32.0" prefWidth="178.0" stylesheets="@../../../../../../SEMESETER%20FINAL%20PROJECT/IDEA%20Project/Hardware-Store-Management-System-Layered-Architecture-Hibernate/src/main/resources/style/dashboard.css" text="Total Branches" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblBranches" contentDisplay="CENTER" layoutX="2.0" layoutY="40.0" prefHeight="143.0" prefWidth="200.0" stylesheets="@../../../../../../SEMESETER%20FINAL%20PROJECT/IDEA%20Project/Hardware-Store-Management-System-Layered-Architecture-Hibernate/src/main/resources/style/dashboard.css" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="80.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="574.0" layoutY="251.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8e44ad; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="7.0" layoutY="4.0" prefHeight="32.0" prefWidth="178.0" stylesheets="@../../../../../../SEMESETER%20FINAL%20PROJECT/IDEA%20Project/Hardware-Store-Management-System-Layered-Architecture-Hibernate/src/main/resources/style/dashboard.css" text="Total Borrowings" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblBorrowings" contentDisplay="CENTER" layoutX="1.0" layoutY="39.0" prefHeight="143.0" prefWidth="200.0" stylesheets="@../../../../../../SEMESETER%20FINAL%20PROJECT/IDEA%20Project/Hardware-Store-Management-System-Layered-Architecture-Hibernate/src/main/resources/style/dashboard.css" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="80.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

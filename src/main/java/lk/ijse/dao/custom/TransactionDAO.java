@@ -6,4 +6,5 @@ import lk.ijse.entity.Transactions;
 public interface TransactionDAO extends CrudDAO<Transactions> {
     public boolean borrowedBooks(String id);
     public boolean returnedBook(String id);
+    public String getTotalTransactions();
 }

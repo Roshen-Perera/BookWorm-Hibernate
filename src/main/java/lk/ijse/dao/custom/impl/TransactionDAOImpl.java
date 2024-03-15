@@ -4,9 +4,11 @@ import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.custom.TransactionDAO;
 import lk.ijse.entity.Book;
 import lk.ijse.entity.Transactions;
+import lk.ijse.entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -80,7 +82,8 @@ public class TransactionDAOImpl implements TransactionDAO {
     public boolean delete(String id) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transactions = session.beginTransaction();
-        session.delete(id);
+        session.createNativeQuery("delete from Transactions where tranID='"+id+"'", Transactions.class).executeUpdate();
+
         transactions.commit();
         session.close();
         return true;
@@ -146,5 +149,18 @@ public class TransactionDAOImpl implements TransactionDAO {
             e.printStackTrace();
             return false;
         }
+    }
+    public String getTotalTransactions() {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        Query<Long> query = session.createQuery("SELECT count(*) FROM Transactions", Long.class);
+        Long count = query.uniqueResult();
+        String totalCount = String.valueOf(count);
+
+        transaction.commit();
+        session.close();
+
+        return totalCount;
     }
 }

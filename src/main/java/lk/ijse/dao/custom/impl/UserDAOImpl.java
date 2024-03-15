@@ -107,4 +107,17 @@ public class UserDAOImpl implements UserDAO {
         session.close();
         return entity;
     }
+    public String getTotalUsers() {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        Query<Long> query = session.createQuery("SELECT count(*) FROM user", Long.class);
+        Long count = query.uniqueResult();
+        String totalCount = String.valueOf(count);
+
+        transaction.commit();
+        session.close();
+
+        return totalCount;
+    }
 }
